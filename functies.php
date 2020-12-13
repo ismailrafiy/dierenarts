@@ -28,7 +28,7 @@ function maakConnectie(){
                 $arrDier[$row["id"]]['naam'] = $row["naam"];
                 $sqlEigenaar = "SELECT 
                 eigenaars.id as id_eigenaar,
-                eigenaars.voor-achternaam as naam_eigenaar
+                eigenaars.voor_achternaam as naam_eigenaar
                 FROM dier_eigenaars
                 INNER JOIN eigenaars 
                 ON dier_eigenaar.id_eigenaar=eigenaars.id
