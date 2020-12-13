@@ -85,4 +85,29 @@ function maakConnectie(){
         return $arrDier;
 
     }
+	
+	//Dropdown om mijn dier te selecteren
+    function kiesDier($arrDier,$idCurrentDier){
+        $returnString = "<div class='row'>
+                <div class='col-12'>
+                    <div class='form-group'>
+                        <label for='idCurrentDier'>Kies een dier</label>
+                        <select class='form-control' id='idCurrentDier' name='idCurrentDier' onchange='this.form.submit()'>
+                            <option value=''>---NIEUW DIER---</option>";
+        foreach($arrDier as $key => $value){
+            $selected = NULL;
+            if($key == $idCurrentDier){
+                $selected = "SELECTED";
+            }
+              $returnString .="
+                            <option value='$key' $selected >{$value['naam']}</option>";
+        }
+        $returnString .= "
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>";
+        return $returnString;
+    }
 ?>
