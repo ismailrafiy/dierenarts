@@ -31,8 +31,8 @@ function maakConnectie(){
                 eigenaars.voor_achternaam as naam_eigenaar
                 FROM dier_eigenaars
                 INNER JOIN eigenaars 
-                ON dier_eigenaar.id_eigenaar=eigenaars.id
-                WHERE dier_eigenaar.id_dier =".$row["id"];
+                ON dier_eigenaars.id_eigenaar=eigenaars.id
+                WHERE dier_eigenaars.id_dier =".$row["id"];
 
                 $sqlAandoening = "SELECT 
                 aandoeningen.id as id_aandoening,
