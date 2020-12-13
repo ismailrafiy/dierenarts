@@ -110,4 +110,105 @@ function maakConnectie(){
             <hr>";
         return $returnString;
     }
+	
+	//Dromdown met de consult van mijn dier
+    function formDier($arrDier,$idCurrentDier){
+        $returnString = NULL;
+        if($idCurrentDier != NULL){
+            $returnString = PHP_EOL . "
+            <div class='row'>
+                <div class='col-12'>
+                    <h2>Dier</h2>
+                </div>
+                <div class='col-6'>
+                    <div class='form-group'>
+                        <label for='naam'>naam</label>
+                        <input type='text' class='form-control' id='naam' name='naam' value='{$arrDier[$idCurrentDier]['naam']}'>
+                    </div>
+                </div>
+                <div class='col-12'>
+                    <h2>Eigenaars</h2>
+                </div>
+                <div class='col-6'>
+                    <div class='form-group'>";
+                    foreach ($arrDier[$idCurrentDier]['eigenaars'] as $key => $value) {
+                        $returnString .= "<label for='naam_eigenaar'>naam</label>
+                        <input type='text' class='form-control' id='eigenaar' name='eigenaar' value='{$value['naam_eigenaar']}'>";
+                    };
+                $returnString .= "</div>
+                </div>
+                <div class='col-12'>
+                    <h2>Aandoening</h2>
+                </div>
+                <div class='col-6'>
+                    <div class='form-group'>";
+                    foreach ($arrDier[$idCurrentDier]['aandoeningen'] as $key => $value) {
+                        $returnString .= "<label for='aandoening'>aandoening</label>
+                        <input type='text' class='form-control' id='aandoening' name='aandoening' value='{$value['aandoening']}'>
+                        <label for='beschrijving_aandoening'>beschrijving</label>
+                        <input type='text' class='form-control' id='beschrijving' name='beschrijving' value='{$value['beschrijving_aandoening']}'>";
+                    };
+                    $returnString .= "</div>
+                </div>
+                <div class='col-12'>
+                    <h2>Behandeling</h2>
+                </div>
+                <div class='col-10'>
+                    <div class='form-group'>";
+                    foreach ($arrDier[$idCurrentDier]['behandelingen'] as $key => $value) {
+                        $returnString .= "<label for='datum_behandeling'>datum</label>
+                        <input type='date' class='form-control' id='datum' name='datum' value='{$value['datum_behandeling']}'>
+                        <label for='behandeling'>behandeling</label>
+                        <input type='text' class='form-control' id='behandeling' name='behandeling' value='{$value['behandeling']}'>";
+                    };
+                    $returnString .= "</div>
+                </div>
+            </div><hr>";
+            
+        }else{
+            $returnString = PHP_EOL . "<div class='row'>
+            <div class='col-12'>
+                <h2>Dier</h2>
+            </div>
+            <div class='col-6'>
+                <div class='form-group'>
+                    <label for='naam'>naam</label>
+                    <input type='text' class='form-control' id='naam' name='naam' value=''>
+                </div>
+            </div>
+            <div class='col-12'>
+                <h2>Eigenaar</h2>
+            </div>
+                <div class='col-6'>
+                    <div class='form-group'>
+                        <label for='naam_eigenaar'>naam</label>
+                        <input type='text' class='form-control' id='eigenaar' name='eigenaar' value=''>
+                    </div>
+                </div>
+            <div class='col-12'>
+                <h2>Aandoening</h2>
+            </div>
+                <div class='col-6'>
+                    <div class='form-group'>
+                        <label for='aandoening'>aandoening</label>
+                        <input type='text' class='form-control' id='aandoening' name='aandoening' value=''>
+                        <label for='beschrijving_aandoening'>beschrijving</label>
+                        <input type='text' class='form-control' id='beschrijving' name='beschrijving' value=''>
+                    </div>
+                </div>
+            <div class='col-12'>
+                <h2>Behandeling</h2>
+            </div>
+                <div class='col-10'>
+                    <div class='form-group'>
+                    <label for='datum_behandeling'>datum</label>
+                        <input type='date' class='form-control' id='datum' name='datum' value=''>
+                        <label for='behandeling'>behandeling</label>
+                        <input type='text' class='form-control' id='behandeling' name='behandeling' value=''>
+                    </div>
+                </div>
+        </div><hr>";
+        }
+        return $returnString;
+    }
 ?>
