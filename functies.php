@@ -211,4 +211,34 @@ function maakConnectie(){
         }
         return $returnString;
     }
+	
+	//Maak de knoppen onderaan het formulier
+    function buttonBar($idCurrentDier){
+        $returnString = NULL;
+        if($idCurrentDier==NULL){
+            //Knoppen voor een nieuw dier
+            $returnString .="
+            <div class='row'>
+                <div class='col-md-12 text-center'>
+                    <div class='btn-group' role='group'>
+                      <button type='button' class='btn btn-success' onclick=\"this.form.actie.value='newDier'; this.form.submit()\"><i class='fa fa-plus'></i> Maak nieuw dier</button>
+                      <button type='button' class='btn btn-danger' onclick=\"this.form.actie.value=''; this.form.submit()\"><i class='fa fa-close'></i> Annuleren</button>
+                    </div>
+                </div>
+            </div>";
+        }else{
+            //Knoppen voor een bestaand dier
+            $returnString .="
+            <div class='row'>
+                <div class='col-md-12 text-center'>
+                    <div class='btn-group' role='group'>
+                      <button type='button' class='btn btn-success' onclick=\"this.form.actie.value='updateDier'; this.form.submit()\"><i class='fa fa-check'></i> Gegevens actualiseren</button>
+                      <button type='button' class='btn btn-danger' onclick=\"this.form.actie.value=''; this.form.submit()\"><i class='fa fa-close'></i> Annuleren</button>
+                    </div>
+                </div>
+            </div>";
+        }
+        return $returnString;
+    }
+
 ?>
