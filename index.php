@@ -76,8 +76,14 @@ if($idCurrentDier != NULL && $actie=="updateDier"){
             <?php print formDier($arrDier,$idCurrentDier); ?>
             <?php print buttonBar($idCurrentDier) ?>
             
+			<div class="btn-group">
+			<a href="dieren.php" class="btn btn-primary">Dier</a>
+			<a href="eigenaars.php" class="btn btn-primary">Eigenaar</a>
+			</div>
+			
         </div>
     </form>
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
