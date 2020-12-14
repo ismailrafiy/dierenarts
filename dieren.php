@@ -16,10 +16,10 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $arrDier[$row["ID"]]['naam'] = $row["naam"];
-                $arrDier[$row["ID"]]['geboortedatum'] = $row["geboortedatum"];
-                $arrDier[$row["ID"]]['diersoort'] = $row["diersoort"];
-                $arrDier[$row["ID"]]['ras'] = $row["ras"];
+                $arrDier[$row["id"]]['naam'] = $row["naam"];
+                $arrDier[$row["id"]]['geboortedatum'] = $row["geboortedatum"];
+                $arrDier[$row["id"]]['diersoort'] = $row["diersoort"];
+                $arrDier[$row["id"]]['ras'] = $row["ras"];
             }    
         } else {
             echo "0 results";
