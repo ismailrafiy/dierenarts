@@ -3,23 +3,23 @@
 
     $conn = maakConnectie();
 
-    $arrDier = maakArray($conn);
+    $arrDier = maakArray1($conn);
     //print_r($arrDier);
 	
 	
 //Array van dier maken
     function maakArray1($conn){
         //data selecteren
-        $sql = "SELECT * FROM dieren";
+        $sql = "SELECT * FROM eigenaars";
         $result = $conn->query($sql);
         $arrDier = array();
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $arrDier[$row["id"]]['naam'] = $row["naam"];
-                $arrDier[$row["id"]]['geboortedatum'] = $row["geboortedatum"];
-                $arrDier[$row["id"]]['diersoort'] = $row["diersoort"];
-                $arrDier[$row["id"]]['ras'] = $row["ras"];
+                $arrDier[$row["id"]]['voor_achternaam'] = $row["voor_achternaam"];
+                $arrDier[$row["id"]]['adres'] = $row["adres"];
+                $arrDier[$row["id"]]['telefoonnummer'] = $row["telefoonnummer"];
+                $arrDier[$row["id"]]['email'] = $row["email"];
             }    
         } else {
             echo "0 results";
@@ -33,16 +33,16 @@
         $returnString = "<div class='row'>
                 <div class='col-12'>
                     <div class='form-group'>
-                        <label for='idCurrentDier'>Kies een dier</label>
+                        <label for='idCurrentDier'>Kies een eigenaar</label>
                         <select class='form-control' id='idCurrentDier' name='idCurrentDier' onchange='this.form.submit()'>
-                            <option value=''>---NIEUW DIER---</option>";
+                            <option value=''>---NIEUW EIGENAAR---</option>";
         foreach($arrDier as $key => $value){
             $selected = NULL;
             if($key == $idCurrentDier){
                 $selected = "SELECTED";
             }
               $returnString .="
-                            <option value='$key' $selected >{$value['naam']}</option>";
+                            <option value='$key' $selected >{$value['voor_achternaam']}</option>";
         }
         $returnString .= "
                         </select>
@@ -60,26 +60,26 @@
             $returnString = PHP_EOL . "
             <div class='row'>
                 <div class='col-12'>
-                    <h2>Dier</h2>
+                    <h2>Eigenaar</h2>
                 </div>
                 <div class='col-6'>
                     <div class='form-group'>
-                        <label for='naam'>naam</label>
-                        <input type='text' class='form-control' id='naam' name='naam' value='{$arrDier[$idCurrentDier]['naam']}'>
+                        <label for='voor_achternaam'>voor_achternaam</label>
+                        <input type='text' class='form-control' id='voor_achternaam' name='voor_achternaam' value='{$arrDier[$idCurrentDier]['voor_achternaam']}'>
                     </div>
                     <div class='form-group'>
-                        <label for='geboortedatum'>geboortedatum</label>
-                        <input type='date' class='form-control' id='geboortedatum' name='geboortedatum' value='{$arrDier[$idCurrentDier]['geboortedatum']}'>
+                        <label for='adres'>adres</label>
+                        <input type='date' class='form-control' id='adres' name='adres' value='{$arrDier[$idCurrentDier]['adres']}'>
                     </div>
                 </div>    
                 <div class='col-6'>
                     <div class='form-group'>
-                        <label for='diersoort'>diersoort</label>
-                        <input type='text' class='form-control' id='diersoort' name='diersoort' value='{$arrDier[$idCurrentDier]['diersoort']}'>
+                        <label for='telefoonnumer'>telefoonnummer</label>
+                        <input type='text' class='form-control' id='telefoonnummer' name='telefoonnummer' value='{$arrDier[$idCurrentDier]['telefoonnummer']}'>
                     </div>
                     <div class='form-group'>
-                        <label for='ras'>ras</label>
-                        <input type='text' class='form-control' id='ras' name='ras' value='{$arrDier[$idCurrentDier]['ras']}'>
+                        <label for='email'>email</label>
+                        <input type='text' class='form-control' id='email' name='email' value='{$arrDier[$idCurrentDier]['email']}'>
                     </div>
                 </div>
             </div><hr>";
@@ -87,26 +87,26 @@
         }else{
             $returnString = PHP_EOL . "<div class='row'>
                 <div class='col-12'>
-                    <h2>Dier</h2>
+                    <h2>Eigenaar</h2>
                 </div>
                 <div class='col-6'>
                     <div class='form-group'>
-                        <label for='naam'>naam</label>
-                        <input type='text' class='form-control' id='naam' name='naam' value=''>
+                        <label for='voor_achternaam'>voor_achternaam</label>
+                        <input type='text' class='form-control' id='voor_achternaam' name='voor_achternaam' value=''>
                     </div>
                     <div class='form-group'>
-                        <label for='geboortedatum'>geboortedatum</label>
-                        <input type='date' class='form-control' id='geboortedatum' name='geboortedatum' value=''>
+                        <label for='adres'>adres</label>
+                        <input type='date' class='form-control' id='adres' name='adres' value=''>
                     </div>
                 </div>    
                 <div class='col-6'>
                     <div class='form-group'>
-                        <label for='diersoort'>diersoort</label>
-                        <input type='text' class='form-control' id='diersoort' name='diersoort' value=''>
+                        <label for='telefoonnummer'>telefoonnummer</label>
+                        <input type='text' class='form-control' id='telefoonnummer' name='telefoonnummer' value=''>
                     </div>
                     <div class='form-group'>
-                        <label for='ras'>ras</label>
-                        <input type='text' class='form-control' id='ras' name='ras' value=''>
+                        <label for='email'>email</label>
+                        <input type='text' class='form-control' id='email' name='email' value=''>
                     </div>
                 </div>
             </div><hr>";
@@ -143,7 +143,7 @@
         return $returnString;
     }
 	
-	$arrDier = maakArray($conn);
+	$arrDier = maakArray1($conn);
 
 $idCurrentDier = NULL;
 if(isset($_GET['idCurrentDier'])){
@@ -158,24 +158,24 @@ if(isset($_GET['actie'])){
 }
 
 if($idCurrentDier != NULL && $actie=="updateDier"){
-    $sql = "UPDATE dieren SET 
-    naam = '{$_GET['naam']}', 
-    geboortedatum = '{$_GET['geboortedatum']}', 
-    diersoort = '{$_GET['diersoort']}', 
-    ras = '{$_GET['ras']}'    
+    $sql = "UPDATE eigenaars SET 
+    voor_achternaam = '{$_GET['voor_achternaam']}', 
+    adres = '{$_GET['adres']}', 
+    telefoonnummer = '{$_GET['telefoonnummer']}', 
+    email = '{$_GET['email']}'    
     WHERE ID = $idCurrentDier";
     if ($conn->query($sql) === TRUE) {
-      $arrDier = maakArray($conn);
+      $arrDier = maakArray1($conn);
     } else {
       echo "Error updating record: " . $conn->error;
     }
-}elseif(isset($_GET['naam']) && $actie=="newDier"){
-    $sql = "INSERT INTO dieren (naam, geboortedatum, diersoort, ras)
-VALUES ('{$_GET['naam']}', '{$_GET['geboortedatum']}', '{$_GET['diersoort']}', '{$_GET['ras']}')";
+}elseif(isset($_GET['voor_achternaam']) && $actie=="newDier"){
+    $sql = "INSERT INTO eigenaars (voor_achternaam, adres, telefoonnummer, email)
+VALUES ('{$_GET['voor_achternaam']}', '{$_GET['adres']}', '{$_GET['telefoonnummer']}', '{$_GET['email']}')";
 
     if ($conn->query($sql) === TRUE) {
       $idCurrentDier = $conn->insert_id;
-      $arrDier = maakArray($conn);
+      $arrDier = maakArray1($conn);
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -194,7 +194,7 @@ VALUES ('{$_GET['naam']}', '{$_GET['geboortedatum']}', '{$_GET['diersoort']}', '
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
-    <title>Dier</title>
+    <title>Eigenaar</title>
   </head>
   <body>
     <form method="GET">
@@ -202,7 +202,7 @@ VALUES ('{$_GET['naam']}', '{$_GET['geboortedatum']}', '{$_GET['diersoort']}', '
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>DIER</h1>
+                    <h1>EIGENAAR</h1>
                 </div>
             </div>
             <hr>

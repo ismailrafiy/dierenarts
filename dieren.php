@@ -3,7 +3,7 @@
 
     $conn = maakConnectie();
 
-    $arrDier = maakArray($conn);
+    $arrDier = maakArray1($conn);
     //print_r($arrDier);
 	
 	
@@ -143,7 +143,7 @@
         return $returnString;
     }
 	
-	$arrDier = maakArray($conn);
+	$arrDier = maakArray1($conn);
 
 $idCurrentDier = NULL;
 if(isset($_GET['idCurrentDier'])){
@@ -165,7 +165,7 @@ if($idCurrentDier != NULL && $actie=="updateDier"){
     ras = '{$_GET['ras']}'    
     WHERE ID = $idCurrentDier";
     if ($conn->query($sql) === TRUE) {
-      $arrDier = maakArray($conn);
+      $arrDier = maakArray1($conn);
     } else {
       echo "Error updating record: " . $conn->error;
     }
@@ -175,7 +175,7 @@ VALUES ('{$_GET['naam']}', '{$_GET['geboortedatum']}', '{$_GET['diersoort']}', '
 
     if ($conn->query($sql) === TRUE) {
       $idCurrentDier = $conn->insert_id;
-      $arrDier = maakArray($conn);
+      $arrDier = maakArray1($conn);
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
